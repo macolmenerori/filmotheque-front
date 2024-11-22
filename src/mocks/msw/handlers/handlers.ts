@@ -19,5 +19,9 @@ export const handlers = [
       );
     }
     return res(ctx.status(401), ctx.json({ message: 'Invalid credentials' }));
+  }),
+  // Mock the /v1/users/logout API to return a successful logout
+  rest.delete(`${authUrl}/v1/users/logout`, (req, res, ctx) => {
+    return res(ctx.status(200));
   })
 ];
