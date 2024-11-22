@@ -3,7 +3,11 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+    './node_modules/tw-elements/js/**/*.js'
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -11,5 +15,6 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/forms')]
+  plugins: [require('@tailwindcss/forms'), require('tw-elements/plugin.cjs')],
+  darkMode: 'class'
 };

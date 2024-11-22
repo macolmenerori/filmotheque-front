@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { authApi } from '../../api';
+import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 import { useUser } from '../../context/UserContext/UserContext';
 
 /**
@@ -34,7 +35,7 @@ const Login = () => {
   }, []);
 
   if (auth === null) {
-    return <div>Loading...{/* TODO: add loading spinner */}</div>;
+    return <LoadingSpinner />;
   }
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
