@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { authApi } from '../../api';
+import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
+import { useUser } from '../../context/UserContext/UserContext';
 
 /**
  * Login page. User can login with email and password. This sets the user in the UserContext and a JWT token on a cookie.
@@ -11,6 +13,8 @@ import { authApi } from '../../api';
  * @returns {JSX.Element} Login component
  */
 const Login = () => {
+  const { setUser } = useUser();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -31,7 +35,7 @@ const Login = () => {
   }, []);
 
   if (auth === null) {
-    return <div>Loading...{/* TODO: add loading spinner */}</div>;
+    return <LoadingSpinner />;
   }
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,7 +43,7 @@ const Login = () => {
     try {
       const response = await authApi.post('/v1/users/login', { email, password });
       if (response.status === 200) {
-        //setUser(response.data.data.user); //TODO:
+        setUser(response.data.data.user);
         navigate('/mainpage'); // Redirect to the main page after login
       }
     } catch (err) {

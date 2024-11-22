@@ -6,18 +6,17 @@ import userEvent from '@testing-library/user-event';
 
 import Login from './Login';
 
-// TODO: User context
-// const mockSetUser = jest.fn(); // Mock the setUser function
-// jest.mock('../../context/UserContext/UserContext', () => ({
-//   user: {
-//     name: 'John Doe',
-//     email: 'john@example.com',
-//     role: 'admin'
-//   },
-//   useUser: () => ({
-//     setUser: mockSetUser
-//   })
-// }));
+const mockSetUser = jest.fn(); // Mock the setUser function
+jest.mock('../../context/UserContext/UserContext', () => ({
+  user: {
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'admin'
+  },
+  useUser: () => ({
+    setUser: mockSetUser
+  })
+}));
 
 describe('Login', () => {
   it('Load login page', async () => {
@@ -51,16 +50,15 @@ describe('Login', () => {
     // Simulate form submission by clicking the login button
     fireEvent.click(submitButton);
 
-    // TODO: User context
     // Wait for the success response and assert that setUser and navigate are called
-    // await waitFor(() => {
-    //   // Check if setUser was called with the correct user data
-    //   expect(mockSetUser).toHaveBeenCalledWith({
-    //     id: 1,
-    //     name: 'Test User',
-    //     email: 'test@example.com'
-    //   });
-    // });
+    await waitFor(() => {
+      // Check if setUser was called with the correct user data
+      expect(mockSetUser).toHaveBeenCalledWith({
+        id: 1,
+        name: 'Test User',
+        email: 'test@example.com'
+      });
+    });
   });
 
   it('Show error if login fails', async () => {

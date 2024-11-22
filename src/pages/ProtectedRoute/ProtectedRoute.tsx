@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { authApi } from '../../api';
+import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 
 /**
  * Page that checks if the user is logged in. If they are, it renders the children components. If not, it redirects to the login page.
@@ -25,7 +26,7 @@ const ProtectedRoute = () => {
   }, []);
 
   if (auth === null) {
-    return <div>Loading...{/* TODO: add loading spinner */}</div>;
+    return <LoadingSpinner />;
   }
 
   return auth ? <Outlet /> : <Navigate to="/login" />;
