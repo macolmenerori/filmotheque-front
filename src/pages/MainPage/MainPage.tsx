@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { PlusIcon } from '@heroicons/react/20/solid';
+import useSWR from 'swr';
 
+import { api } from '../../api';
+import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 import Navbar from '../../common/components/Navbar/Navbar';
+import { MovieApiResponse } from '../../common/types/Movie.types';
+
+import MoviesTable from './MoviesTable/MoviesTable';
 
 const MainPage = () => {
+  const [page, setPage] = useState<number>(1);
+  const [perPage, setPerPage] = useState<number>(5);
+
+  const { data, error, isLoading, mutate } = useSWR(
+    `/v1/movies/movie?page=${page}&perpage=${perPage}`,
+    () => {
+      return api
+        .get<MovieApiResponse>(`/v1/movies/movie?page=${page}&perpage=${perPage}`)
+        .then((res) => res.data);
+    }
+  );
+
   return (
     <>
       {/* NAVBAR */}
@@ -29,6 +47,15 @@ const MainPage = () => {
             </span>
           </div>
         </div>
+        {/* TABLE */}
+        {isLoading && (
+          <div className="mt-5">
+            <LoadingSpinner />
+          </div>
+        )}
+        {error && <p className="mt-5">Error retrieving movies. Try again later...</p>}
+        {data && data.data.movies.length === 0 && <p className="mt-5">No movies found...</p>}
+        {data && <MoviesTable movies={data.data.movies} />}
       </div>
     </>
   );
