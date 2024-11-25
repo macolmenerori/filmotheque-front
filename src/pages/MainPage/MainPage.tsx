@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import { api } from '../../api';
 import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 import Navbar from '../../common/components/Navbar/Navbar';
+import Pagination from '../../common/components/Pagination/Pagination';
 import { MovieApiResponse } from '../../common/types/Movie.types';
 
 import MoviesTable from './MoviesTable/MoviesTable';
@@ -55,7 +56,18 @@ const MainPage = () => {
         )}
         {error && <p className="mt-5">Error retrieving movies. Try again later...</p>}
         {data && data.data.movies.length === 0 && <p className="mt-5">No movies found...</p>}
-        {data && <MoviesTable movies={data.data.movies} />}
+        {data && (
+          <div>
+            <MoviesTable movies={data.data.movies} />
+            <Pagination
+              currentPage={page}
+              perPage={perPage}
+              totalEntries={data.pagination.totalCount}
+              onPageChange={setPage}
+              onPerPageChange={setPerPage}
+            />
+          </div>
+        )}
       </div>
     </>
   );
