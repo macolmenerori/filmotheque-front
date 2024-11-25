@@ -16,21 +16,53 @@ const MainPage = () => {
   const [perPage, setPerPage] = useState<number>(5);
   const [sortBy, setSortBy] = useState<string | null>(null); // 'title', 'year', or 'length'
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null); // 'asc' or 'desc'
+  const [filterWatched, setFilterWatched] = useState<boolean | null>(null);
+  const [filterBackedUp, setFilterBackedUp] = useState<boolean | null>(null);
 
   const { data, error, isLoading, mutate } = useSWR(
     `/v1/movies/movie?page=${page}&perpage=${perPage}${
       sortBy ? `&sortBy=${sortBy}&sortOrder=${sortOrder}` : ''
-    }`,
+    }${filterWatched !== null ? `&watched=${filterWatched}` : ''}${filterBackedUp !== null ? `&backedUp=${filterBackedUp}` : ''}`,
     () => {
       return api
         .get<MovieApiResponse>(
           `/v1/movies/movie?page=${page}&perpage=${perPage}${
             sortBy ? `&sortBy=${sortBy}&sortOrder=${sortOrder}` : ''
-          }`
+          }${filterWatched !== null ? `&watched=${filterWatched}` : ''}${filterBackedUp !== null ? `&backedUp=${filterBackedUp}` : ''}`
         )
         .then((res) => res.data);
     }
   );
+
+  const resetOtherFiltersAndSorting = () => {
+    setFilterWatched(null);
+    setFilterBackedUp(null);
+    setSortBy(null);
+    setSortOrder(null);
+    setPage(1); // Reset to the first page
+  };
+
+  const handleFilterWatched = () => {
+    resetOtherFiltersAndSorting();
+    if (filterWatched === true) {
+      setFilterWatched(false);
+    } else if (filterWatched === false) {
+      setFilterWatched(null);
+    } else {
+      setFilterWatched(true);
+    }
+  };
+
+  const handleFilterBackedUp = () => {
+    resetOtherFiltersAndSorting();
+    if (filterBackedUp === true) {
+      setFilterBackedUp(false);
+    } else if (filterBackedUp === false) {
+      setFilterBackedUp(null);
+    } else {
+      setFilterBackedUp(true);
+    }
+  };
 
   const handleSort = (column: 'title' | 'year' | 'length') => {
     if (sortBy === column) {
@@ -74,6 +106,53 @@ const MainPage = () => {
               </button>
             </span>
           </div>
+        </div>
+        {/* FILTERS */}
+        <div className="flex space-x-4 mb-6 mt-6">
+          <button
+            onClick={handleFilterWatched}
+            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-sm ${
+              filterWatched !== null
+                ? 'bg-purple-600 text-white'
+                : 'bg-white text-purple-600 border border-purple-600'
+            }`}
+          >
+            {filterWatched === true
+              ? 'Showing watched only'
+              : filterWatched === false
+                ? 'Showing not watched only'
+                : 'Show watched only'}
+          </button>
+
+          <button
+            onClick={handleFilterBackedUp}
+            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-sm ${
+              filterBackedUp !== null
+                ? 'bg-purple-600 text-white'
+                : 'bg-white text-purple-600 border border-purple-600'
+            }`}
+          >
+            {filterBackedUp === true
+              ? 'Showing backed up only'
+              : filterBackedUp === false
+                ? 'Showing not backed up only'
+                : 'Show backed up only'}
+          </button>
+
+          <button
+            onClick={(e) => handleSort('year')}
+            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-sm ${
+              sortBy === 'year'
+                ? 'bg-purple-600 text-white'
+                : 'bg-white text-purple-600 border border-purple-600'
+            }`}
+          >
+            {sortOrder === 'asc'
+              ? 'Sorting by year: asc'
+              : sortOrder === 'desc'
+                ? 'Sorting by year: desc'
+                : 'Sort by year'}
+          </button>
         </div>
         {/* TABLE */}
         {isLoading && (
