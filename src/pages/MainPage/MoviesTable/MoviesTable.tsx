@@ -1,5 +1,8 @@
 import React from 'react';
 
+import BackedUpChip from '../../../common/components/Chips/BackedUpChip/BackedUpChip';
+import WatchedChip from '../../../common/components/Chips/WatchedChip/WatchedChip';
+
 import { MoviesTableProps } from './MoviesTable.types';
 
 const MoviesTable = ({ movies }: MoviesTableProps) => {
@@ -7,12 +10,11 @@ const MoviesTable = ({ movies }: MoviesTableProps) => {
     <tr key={movie.id}>
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
         <div className="flex items-center">
-          <div className="flex-shrink-0 w-10 h-10">
-            {/* TODO: poster */}
+          <div className="flex-shrink-0 w-10 h-14">
             <img
-              className="w-10 h-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-              alt=""
+              className="w-10 h-14"
+              src={movie.poster_url !== '' ? `${movie.poster_url}` : './assets/moviePosterIcon.png'}
+              alt={`${movie.title} poster`}
             />
           </div>
 
@@ -25,19 +27,19 @@ const MoviesTable = ({ movies }: MoviesTableProps) => {
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
         <div className="text-sm leading-5 text-gray-900">
-          {/* TODO: fix hours */}
-          {`${Math.floor(movie.lenght / 60)}h ${movie.lenght % 60}min`}
+          {`${Math.floor(movie.length / 60)}h ${movie.length % 60}min`}
         </div>
-        <div className="text-xs leading-5 text-gray-500">{`${movie.lenght} min`}</div>
+        <div className="text-xs leading-5 text-gray-500">{`${movie.length} min`}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-        {/* TODO: backed up chips */}
-        <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-          Backed Up
-        </span>
+        <WatchedChip watched={movie.watched} />
+      </td>
+
+      <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+        <BackedUpChip backedUp={movie.backedUp} />
         {movie.backedUp && (
-          <div className="text-xs leading-5 text-gray-500 ml-2 mt-1">{`${movie.size} GB`}</div>
+          <div className="text-xs leading-5 text-gray-500 ml-5 mt-1">{`${movie.size} GB`}</div>
         )}
       </td>
 
@@ -66,6 +68,9 @@ const MoviesTable = ({ movies }: MoviesTableProps) => {
                 </th>
                 <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                   Length
+                </th>
+                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                  Watched
                 </th>
                 <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                   Backed Up

@@ -13,7 +13,7 @@ export type Movie = {
   _id: string;
   title: string;
   year: number;
-  lenght: number;
+  length: number;
   media: string[];
   size: number;
   watched: boolean;
@@ -22,4 +22,5 @@ export type Movie = {
   backedUp: boolean;
   backupDate: string;
   id: string;
+  poster_url: string;
 };
