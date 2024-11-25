@@ -1022,6 +1022,11 @@ input[type='range']:active::-webkit-slider-thumb {
   margin-bottom: -0.5rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1280,6 +1285,10 @@ input[type='range']:active::-webkit-slider-thumb {
 
 .cursor-not-allowed {
   cursor: not-allowed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .touch-none {

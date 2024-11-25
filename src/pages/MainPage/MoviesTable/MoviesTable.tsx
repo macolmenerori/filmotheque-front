@@ -5,7 +5,14 @@ import WatchedChip from '../../../common/components/Chips/WatchedChip/WatchedChi
 
 import { MoviesTableProps } from './MoviesTable.types';
 
-const MoviesTable = ({ movies }: MoviesTableProps) => {
+const MoviesTable = ({ movies, onSort, sortBy, sortOrder }: MoviesTableProps) => {
+  const getSortIcon = (column: string) => {
+    if (sortBy === column) {
+      return sortOrder === 'asc' ? '↑' : '↓';
+    }
+    return '';
+  };
+
   const movieRows = movies.map((movie) => (
     <tr key={movie.id}>
       <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -63,11 +70,17 @@ const MoviesTable = ({ movies }: MoviesTableProps) => {
           <table className="min-w-full">
             <thead>
               <tr>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                  Title
+                <th
+                  className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 cursor-pointer"
+                  onClick={() => onSort('title')}
+                >
+                  Title {getSortIcon('title')}
                 </th>
-                <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                  Length
+                <th
+                  className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 cursor-pointer"
+                  onClick={() => onSort('length')}
+                >
+                  Length {getSortIcon('length')}
                 </th>
                 <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                   Watched

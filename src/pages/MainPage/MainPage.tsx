@@ -14,15 +14,42 @@ import MoviesTable from './MoviesTable/MoviesTable';
 const MainPage = () => {
   const [page, setPage] = useState<number>(1);
   const [perPage, setPerPage] = useState<number>(5);
+  const [sortBy, setSortBy] = useState<string | null>(null); // 'title', 'year', or 'length'
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null); // 'asc' or 'desc'
 
   const { data, error, isLoading, mutate } = useSWR(
-    `/v1/movies/movie?page=${page}&perpage=${perPage}`,
+    `/v1/movies/movie?page=${page}&perpage=${perPage}${
+      sortBy ? `&sortBy=${sortBy}&sortOrder=${sortOrder}` : ''
+    }`,
     () => {
       return api
-        .get<MovieApiResponse>(`/v1/movies/movie?page=${page}&perpage=${perPage}`)
+        .get<MovieApiResponse>(
+          `/v1/movies/movie?page=${page}&perpage=${perPage}${
+            sortBy ? `&sortBy=${sortBy}&sortOrder=${sortOrder}` : ''
+          }`
+        )
         .then((res) => res.data);
     }
   );
+
+  const handleSort = (column: 'title' | 'year' | 'length') => {
+    if (sortBy === column) {
+      // Toggle sort order or disable sorting
+      if (sortOrder === 'asc') {
+        setSortOrder('desc');
+      } else if (sortOrder === 'desc') {
+        setSortBy(null);
+        setSortOrder(null);
+      } else {
+        setSortOrder('asc');
+      }
+    } else {
+      // Enable sorting for a new column
+      setSortBy(column);
+      setSortOrder('asc');
+    }
+    setPage(1); // Reset to page 1 when sorting changes
+  };
 
   return (
     <>
@@ -58,7 +85,12 @@ const MainPage = () => {
         {data && data.data.movies.length === 0 && <p className="mt-5">No movies found...</p>}
         {data && (
           <div>
-            <MoviesTable movies={data.data.movies} />
+            <MoviesTable
+              movies={data.data.movies}
+              onSort={handleSort}
+              sortBy={sortBy}
+              sortOrder={sortOrder}
+            />
             <Pagination
               currentPage={page}
               perPage={perPage}
