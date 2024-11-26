@@ -15,6 +15,11 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/forms'), require('tw-elements/plugin.cjs')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+    require('tw-elements/plugin.cjs')
+  ],
   darkMode: 'class'
 };

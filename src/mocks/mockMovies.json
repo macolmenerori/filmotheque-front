@@ -1,0 +1,134 @@
+[
+  {
+    "backedUp": false,
+    "backupDate": "",
+    "id": "612",
+    "length": 145,
+    "media": ["Blu-Ray"],
+    "meta_ids": {
+      "imdb": "tt0099685",
+      "slug": "goodfellas-1990",
+      "tmdb": "769"
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+    "size": 0,
+    "title": "GoodFellas",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 1990
+  },
+  {
+    "backedUp": true,
+    "backupDate": "",
+    "id": "786892",
+    "length": 148,
+    "media": ["Digital", "DVD"],
+    "meta_ids": {
+      "imdb": "tt12037194",
+      "slug": "furiosa-a-mad-max-saga-2024",
+      "tmdb": 786892,
+      "trakt": 623532
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/tGHUlykWn9V2IIQ4ZaATIAq9VLB.jpg",
+    "size": 22,
+    "title": "Furiosa: A Mad Max Saga",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 2024
+  },
+  {
+    "backedUp": false,
+    "backupDate": "",
+    "id": "67",
+    "length": 155,
+    "media": ["digital"],
+    "meta_ids": {
+      "imdb": "tt0172495",
+      "slug": "gladiator-2000",
+      "tmdb": 98,
+      "trakt": 67
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/90QFOG5zSN4cbrIVs4DL4ePAuA5.jpg",
+    "size": 5.25,
+    "title": "Gladiator",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 2000
+  },
+  {
+    "backedUp": false,
+    "backupDate": "",
+    "id": "16662",
+    "length": 148,
+    "media": ["digital"],
+    "meta_ids": {
+      "imdb": "tt1375666",
+      "slug": "inception-2010",
+      "tmdb": 27205,
+      "trakt": 16662
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/tXQvtRWfkUUnWJAn2tN3jERIUG.jpg",
+    "size": 5.25,
+    "title": "Inception",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 2010
+  },
+  {
+    "backedUp": false,
+    "backupDate": "",
+    "id": "9",
+    "length": 142,
+    "media": ["DVD"],
+    "meta_ids": {
+      "imdb": "tt0109830",
+      "slug": "forrest-gump-1994",
+      "tmdb": 13,
+      "trakt": 9
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/oiqKEhEfxl9knzWXvWecJKN3aj6.jpg",
+    "size": 0,
+    "title": "Forrest Gump",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 1994
+  },
+  {
+    "backedUp": false,
+    "backupDate": "",
+    "id": "243",
+    "length": 102,
+    "media": ["Blu-Ray"],
+    "meta_ids": {
+      "imdb": "tt0034583",
+      "slug": "casablanca-1943",
+      "tmdb": 289,
+      "trakt": 243
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/eSf7DyhTbnREC11VLjxnSeyAfi.jpg",
+    "size": 0,
+    "title": "Casablanca",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 1943
+  },
+  {
+    "backedUp": false,
+    "backupDate": "",
+    "id": "1078",
+    "length": 128,
+    "media": ["Blu-Ray"],
+    "meta_ids": {
+      "imdb": "tt0095647",
+      "slug": "mississippi-burning-1988",
+      "tmdb": 1632,
+      "trakt": 1078
+    },
+    "poster_url": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/1NYRgNNb6YEEorUPFpK3lFU4Oik.jpg",
+    "size": 0,
+    "title": "Mississippi Burning",
+    "user": "user@test.com",
+    "watched": true,
+    "year": 1988
+  }
+]
