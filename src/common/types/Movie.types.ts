@@ -9,6 +9,14 @@ export type MovieApiResponse = {
   pagination: Pagination;
 };
 
+export type FullMovieApiResponse = {
+  status: string;
+  message: string;
+  data: {
+    movie: Movie;
+  };
+};
+
 export type Movie = {
   _id?: string;
   title: string;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import BackedUpChip from '../../../common/components/Chips/BackedUpChip/BackedUpChip';
 import WatchedChip from '../../../common/components/Chips/WatchedChip/WatchedChip';
@@ -26,7 +27,11 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder }: MoviesTableProps) =>
           </div>
 
           <div className="ml-4">
-            <div className="text-sm font-medium leading-5 text-gray-900">{movie.title}</div>
+            <div className="text-sm font-medium leading-5 text-gray-900">
+              <NavLink to={`/movie/${movie.id}`} className="text-blue-600 hover:text-blue-900">
+                {movie.title}
+              </NavLink>
+            </div>
             <div className="text-sm leading-5 text-gray-500">{movie.year}</div>
           </div>
         </div>
@@ -55,9 +60,9 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder }: MoviesTableProps) =>
       </td>
 
       <td className="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
-        {/* TODO: edit */}
-        <a href="google.com" className="text-indigo-600 hover:text-indigo-900">
-          Edit
+        {/* TODO: remove */}
+        <a href="google.com" className="text-red-600 hover:text-red-900">
+          Remove
         </a>
       </td>
     </tr>
