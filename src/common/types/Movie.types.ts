@@ -9,6 +9,14 @@ export type MovieApiResponse = {
   pagination: Pagination;
 };
 
+export type FullMovieApiResponse = {
+  status: string;
+  message: string;
+  data: {
+    movie: Movie;
+  };
+};
+
 export type Movie = {
   _id?: string;
   title: string;
@@ -17,7 +25,7 @@ export type Movie = {
   media: string[];
   size: number;
   watched: boolean;
-  meta_ids: string[];
+  meta_ids: Record<string, string | number>;
   user: string;
   backedUp: boolean;
   backupDate: string;

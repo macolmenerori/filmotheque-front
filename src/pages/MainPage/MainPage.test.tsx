@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import useSWR from 'swr';
 
-import { api } from '../../api';
 import mockMovies from '../../mocks/mockMovies.json';
 
 import MainPage from './MainPage';
@@ -29,7 +29,11 @@ describe('MainPage', () => {
 
   it('should render the main page', () => {
     (useSWR as jest.Mock).mockReturnValue({ isLoading: true });
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     expect(screen.getByText('My collection')).toBeInTheDocument();
   });
@@ -37,7 +41,11 @@ describe('MainPage', () => {
   it('renders loading spinner when data is loading', () => {
     (useSWR as jest.Mock).mockReturnValue({ isLoading: true });
 
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
@@ -55,7 +63,11 @@ describe('MainPage', () => {
       data: { data: { movies: [] }, pagination: { totalCount: 0, currentPage: 1, totalPages: 1 } }
     });
 
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     expect(screen.getByText(/no movies found/i)).toBeInTheDocument();
   });
@@ -69,7 +81,11 @@ describe('MainPage', () => {
     };
     (useSWR as jest.Mock).mockReturnValue(mockReturnData);
 
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     await waitFor(() => {
       expect(screen.getByText(/gladiator/i)).toBeInTheDocument();
@@ -83,7 +99,11 @@ describe('MainPage', () => {
     };
     (useSWR as jest.Mock).mockReturnValue(mockReturnData);
 
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     const filterWatchedButton = screen.getByText(/show watched only/i);
     fireEvent.click(filterWatchedButton);
@@ -96,7 +116,11 @@ describe('MainPage', () => {
       data: { data: { movies: [] }, pagination: { totalCount: 0 } }
     });
 
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     const filterBackedUpButton = screen.getByText(/show backed up only/i);
     fireEvent.click(filterBackedUpButton);
@@ -109,7 +133,11 @@ describe('MainPage', () => {
       data: { data: { movies: [] }, pagination: { totalCount: 0 } }
     });
 
-    render(<MainPage />);
+    render(
+      <BrowserRouter>
+        <MainPage />
+      </BrowserRouter>
+    );
 
     const sortByYearButton = screen.getByText(/sort by year/i);
     fireEvent.click(sortByYearButton);

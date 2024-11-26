@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import { render, screen } from '@testing-library/react';
 
@@ -10,12 +11,14 @@ import MoviesTable from './MoviesTable';
 describe('MoviesTable', () => {
   it('renders table with movies', () => {
     render(
-      <MoviesTable
-        movies={mockMovies as unknown as Movie[]}
-        onSort={() => {}}
-        sortBy={null}
-        sortOrder={null}
-      />
+      <BrowserRouter>
+        <MoviesTable
+          movies={mockMovies as unknown as Movie[]}
+          onSort={() => {}}
+          sortBy={null}
+          sortOrder={null}
+        />
+      </BrowserRouter>
     );
 
     expect(screen.getByText('GoodFellas')).toBeInTheDocument();
