@@ -10,7 +10,7 @@ export type MovieApiResponse = {
 };
 
 export type Movie = {
-  _id: string;
+  _id?: string;
   title: string;
   year: number;
   length: number;
