@@ -73,5 +73,25 @@ export const handlers = [
         }
       })
     );
+  }),
+  // Mock the /v1/movies/fullmovie API to return a single movie
+  rest.get(`/v1/movies/fullmovie`, (req, res, ctx) => {
+    const movieId = req.url.searchParams.get('id');
+    const movie = movies.find((m) => m.id === movieId);
+
+    if (!movie) {
+      return res(ctx.status(404), ctx.json({ message: 'Movie not found' }));
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        status: 'success',
+        message: 'Movie retrieved successfully',
+        data: {
+          movie
+        }
+      })
+    );
   })
 ];
