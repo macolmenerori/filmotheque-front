@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 
+import { Movie } from '../../../common/types/Movie.types';
 import movies from '../../mockMovies.json';
 
 const baseURL = process.env.BASE_URL_API;
@@ -90,6 +91,28 @@ export const handlers = [
         message: 'Movie retrieved successfully',
         data: {
           movie
+        }
+      })
+    );
+  }),
+  // Mock the /v1/movies/movie API to update a movie
+  rest.patch(`${baseURL}/v1/movies/movie`, (req, res, ctx) => {
+    const updatedMovie = req.body as Partial<Movie>;
+    const movie = movies.find((m) => m.id === updatedMovie.id);
+
+    if (!movie) {
+      return res(ctx.status(404), ctx.json({ message: 'Movie not found' }));
+    }
+
+    //const updatedMovies = movies.map((m) => (m.id === updatedMovie.id ? { ...m, ...updatedMovie } : m));
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        status: 'success',
+        message: 'Movie updated successfully',
+        data: {
+          movie: updatedMovie
         }
       })
     );

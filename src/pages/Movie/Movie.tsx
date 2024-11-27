@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import useSWR from 'swr';
@@ -8,10 +8,16 @@ import BackedUpChip from '../../common/components/Chips/BackedUpChip/BackedUpChi
 import WatchedChip from '../../common/components/Chips/WatchedChip/WatchedChip';
 import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 import Navbar from '../../common/components/Navbar/Navbar';
-import { FullMovieApiResponse } from '../../common/types/Movie.types';
+import { FullMovieApiResponse, Movie } from '../../common/types/Movie.types';
+
+import EditMovieModal from './EditMovieModal/EditMovieModal';
 
 const Movie = () => {
   const params = useParams();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const { data, error, isLoading, mutate } = useSWR(
     `/v1/movies/fullmovie?id=${params.movieId}`,
@@ -21,6 +27,29 @@ const Movie = () => {
         .then((res) => res.data);
     }
   );
+
+  const handleSave = async (updatedMovie: Partial<Movie>) => {
+    try {
+      const res = await api.patch('/v1/movies/movie', updatedMovie, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (res.status === 200) {
+        // TODO: show success toast
+        // Close the modal after saving
+        closeModal();
+        // Refresh table
+        mutate();
+      } else {
+        throw new Error('Failed to save movie');
+      }
+    } catch (e) {
+      // TODO: show fail toast
+      console.error(e);
+    }
+  };
 
   return (
     <div>
@@ -51,7 +80,10 @@ const Movie = () => {
                       <h1 className="text-2xl lg:text-4xl font-bold mr-3">
                         {data.data.movie.title}
                       </h1>
-                      <button className="px-3 py-1.5 text-sm rounded-md font-medium shadow-sm bg-purple-600 text-white">
+                      <button
+                        className="px-3 py-1.5 text-sm rounded-md font-medium shadow-sm bg-purple-600 text-white"
+                        onClick={openModal}
+                      >
                         Edit
                       </button>
                     </div>
@@ -88,6 +120,9 @@ const Movie = () => {
                 </div>
               </div>
             </>
+          )}
+          {isModalOpen && data?.data.movie != undefined && (
+            <EditMovieModal movie={data.data.movie} onClose={closeModal} onSave={handleSave} />
           )}
         </div>
       </div>
