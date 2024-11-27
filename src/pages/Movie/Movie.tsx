@@ -28,14 +28,27 @@ const Movie = () => {
     }
   );
 
-  const handleSave = async (updatedMovie: Movie) => {
-    // Mock API call
-    console.log('Updated movie details:', updatedMovie);
-    // TODO: API call
-    // Close the modal after saving
-    closeModal();
-    // Refresh table
-    mutate();
+  const handleSave = async (updatedMovie: Partial<Movie>) => {
+    try {
+      const res = await api.patch('/v1/movies/movie', updatedMovie, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (res.status === 200) {
+        // TODO: show success toast
+        // Close the modal after saving
+        closeModal();
+        // Refresh table
+        mutate();
+      } else {
+        throw new Error('Failed to save movie');
+      }
+    } catch (e) {
+      // TODO: show fail toast
+      console.error(e);
+    }
   };
 
   return (

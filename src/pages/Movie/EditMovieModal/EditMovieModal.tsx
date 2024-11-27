@@ -19,12 +19,25 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
   const backedUpValue = watch('backedUp');
 
   const onSubmit = (data: Movie) => {
-    const processedData = { ...data, media: (data.media as unknown as string).split(',') };
-    // If nothing has changed, close the modal
+    // 1. Split Media string into an array
+    let processedData = { ...data };
+    try {
+      processedData = { ...data, media: (data.media as unknown as string).split(',') };
+    } catch (e) {
+      processedData = { ...data };
+    }
+    // 2. If nothing has changed, close the modal
     if (JSON.stringify(processedData) === JSON.stringify(movie)) {
       onClose();
     } else {
-      onSave(processedData);
+      // 3. Only save the modified fields
+      const modifiedFields = Object.entries(data).reduce((changes, [key, value]) => {
+        if (value !== movie[key as keyof Movie]) {
+          (changes as any)[key] = value;
+        }
+        return changes;
+      }, {} as Partial<Movie>);
+      onSave({ ...modifiedFields, id: movie.id });
     }
   };
 
