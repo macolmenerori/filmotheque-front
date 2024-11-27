@@ -64,6 +64,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Year</span>
               <input
                 type="number"
+                data-testid="year-input"
                 className={`mt-1 block w-full border ${
                   errors.year ? 'border-red-500' : 'border-gray-300'
                 } rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
