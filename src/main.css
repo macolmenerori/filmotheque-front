@@ -1860,6 +1860,10 @@ input[type='range']:active::-webkit-slider-thumb {
   text-transform: none;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .not-italic {
   font-style: normal;
 }
@@ -1920,6 +1924,11 @@ input[type='range']:active::-webkit-slider-thumb {
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+
+.text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .text-gray-900 {
