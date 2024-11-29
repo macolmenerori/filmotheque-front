@@ -105,6 +105,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Size (GB)</span>
               <input
                 type="number"
+                step="any"
                 className={`mt-1 block w-full border ${errors.size ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
                 {...register('size', {
                   required: 'Size is required',
