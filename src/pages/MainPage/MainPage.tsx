@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { PlusIcon } from '@heroicons/react/20/solid';
 import useSWR from 'swr';
@@ -12,6 +13,8 @@ import { MovieApiResponse } from '../../common/types/Movie.types';
 import MoviesTable from './MoviesTable/MoviesTable';
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState<number>(1);
   const [perPage, setPerPage] = useState<number>(5);
   const [sortBy, setSortBy] = useState<string | null>(null); // 'title', 'year', or 'length'
@@ -100,6 +103,7 @@ const MainPage = () => {
               <button
                 type="button"
                 className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={() => navigate('/newmovie')}
               >
                 <PlusIcon aria-hidden="true" className="-ml-0.5 mr-1.5 size-5" />
                 New movie
