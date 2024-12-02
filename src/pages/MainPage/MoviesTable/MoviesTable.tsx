@@ -32,14 +32,13 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
       const res = await api.delete(`/v1/movies/movie?id=${selectedMovie.id}`);
 
       if (res.status === 204) {
-        // TODO: show success toast
+        showToast({ title: 'Success', message: 'The movie was deleted', type: 'success' });
         mutate();
       } else {
         throw new Error('Failed to delete movie');
       }
     } catch (e) {
-      // TODO: error toast
-      console.error('Error deleting movie:', e);
+      showToast({ title: 'Error', message: 'Failed to delete the movie', type: 'danger' });
     } finally {
       handleCloseModal();
     }
@@ -133,7 +132,6 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
           >
             {`Mark as ${movie.watched ? 'unwatched' : 'watched'}`}
           </button>
-          {/* TODO: remove */}
           <button
             className="border-0 bg-transparent text-red-600 hover:text-red-900"
             onClick={() => handleOpenModal(movie)}

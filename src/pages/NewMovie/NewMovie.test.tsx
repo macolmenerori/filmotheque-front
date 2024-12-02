@@ -3,6 +3,7 @@ import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { api } from '../../api';
+import { useToast } from '../../context/ToastContext/ToastContext';
 import { useUser } from '../../context/UserContext/UserContext';
 
 import NewMovie from './NewMovie';
@@ -18,12 +19,17 @@ jest.mock('../../context/UserContext/UserContext', () => ({
   useUser: jest.fn()
 }));
 
+jest.mock('../../context/ToastContext/ToastContext');
+const mockUseToast = useToast as jest.Mock;
+const mockShowToast = jest.fn();
+
 jest.useFakeTimers();
 
 describe('NewMovie', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     (useUser as jest.Mock).mockReturnValue({ user: mockUser });
+    mockUseToast.mockReturnValue({ showToast: mockShowToast });
   });
 
   it('renders form fields correctly', () => {
