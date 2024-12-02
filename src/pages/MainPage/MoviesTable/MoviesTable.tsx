@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { api } from '../../../api';
 import BackedUpChip from '../../../common/components/Chips/BackedUpChip/BackedUpChip';
 import WatchedChip from '../../../common/components/Chips/WatchedChip/WatchedChip';
+import { Movie } from '../../../common/types/Movie.types';
 
 import { MoviesTableProps } from './MoviesTable.types';
 
 const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableProps) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+
+  const handleOpenModal = (movie: Movie) => {
+    setSelectedMovie(movie);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsDeleteModalOpen(false);
+    setSelectedMovie(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!selectedMovie) return;
+
+    try {
+      const res = await api.delete(`/v1/movies/movie?id=${selectedMovie.id}`);
+
+      if (res.status === 204) {
+        // TODO: show success toast
+        mutate();
+      } else {
+        throw new Error('Failed to delete movie');
+      }
+    } catch (e) {
+      // TODO: error toast
+      console.error('Error deleting movie:', e);
+    } finally {
+      handleCloseModal();
+    }
+  };
+
   const getSortIcon = (column: string) => {
     if (sortBy === column) {
       return sortOrder === 'asc' ? '↑' : '↓';
@@ -94,7 +128,10 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
             {`Mark as ${movie.watched ? 'unwatched' : 'watched'}`}
           </button>
           {/* TODO: remove */}
-          <button className="border-0 bg-transparent text-red-600 hover:text-red-900">
+          <button
+            className="border-0 bg-transparent text-red-600 hover:text-red-900"
+            onClick={() => handleOpenModal(movie)}
+          >
             Remove
           </button>
         </div>
@@ -137,6 +174,31 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
           </table>
         </div>
       </div>
+      {/* Delete movie confirmation modal */}
+      {isDeleteModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-lg font-semibold">Confirm Deletion</h2>
+            <p className="text-sm text-gray-700 mt-2">
+              Are you sure you want to delete <strong>{selectedMovie?.title}</strong>?
+            </p>
+            <div className="mt-4 flex justify-end gap-4">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                onClick={handleCloseModal}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                onClick={handleConfirmDelete}
+              >
+                Yes, Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
