@@ -17,6 +17,7 @@ describe('MoviesTable', () => {
           onSort={() => {}}
           sortBy={null}
           sortOrder={null}
+          mutate={() => {}}
         />
       </BrowserRouter>
     );

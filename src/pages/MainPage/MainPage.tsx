@@ -173,6 +173,7 @@ const MainPage = () => {
               onSort={handleSort}
               sortBy={sortBy}
               sortOrder={sortOrder}
+              mutate={mutate}
             />
             <Pagination
               currentPage={page}
