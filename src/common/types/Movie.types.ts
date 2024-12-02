@@ -17,8 +17,21 @@ export type FullMovieApiResponse = {
   };
 };
 
+export type SearchMovie = {
+  title: string;
+  year: number;
+  ids: Record<string, string | number>;
+};
+
+export type SearchMovieApiResponse = {
+  status: string;
+  message: string;
+  movies: SearchMovie[];
+};
+
 export type Movie = {
   _id?: string;
+  user?: string;
   title: string;
   year: number;
   length: number;
@@ -26,9 +39,10 @@ export type Movie = {
   size: number;
   watched: boolean;
   meta_ids: Record<string, string | number>;
-  user: string;
   backedUp: boolean;
   backupDate: string;
   id: string;
   poster_url: string;
 };
+
+export type MovieFormData = Omit<Movie, 'media'> & { media: string };

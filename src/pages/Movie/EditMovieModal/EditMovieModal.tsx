@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import { Movie } from '../../../common/types/Movie.types';
+import { Movie, MovieFormData } from '../../../common/types/Movie.types';
 
 import { EditMovieModalProps } from './EditMovieModal.types';
 
@@ -13,30 +13,29 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
     formState: { errors },
     watch
   } = useForm({
-    defaultValues: { ...movie }
+    defaultValues: { ...movie, media: movie.media.join(', ') }
   });
 
   const backedUpValue = watch('backedUp');
 
-  const onSubmit = (data: Movie) => {
+  const onSubmit = (data: MovieFormData) => {
     // 1. Split Media string into an array
-    let processedData = { ...data };
-    try {
-      processedData = { ...data, media: (data.media as unknown as string).split(',') };
-    } catch (e) {
-      processedData = { ...data };
+    const processedData: Movie = { ...data, media: [] };
+    if (data.media.length > 0) {
+      processedData.media = data.media.split(',').map((medium) => medium.trim());
     }
     // 2. If nothing has changed, close the modal
     if (JSON.stringify(processedData) === JSON.stringify(movie)) {
       onClose();
     } else {
       // 3. Only save the modified fields
-      const modifiedFields = Object.entries(data).reduce((changes, [key, value]) => {
+      const modifiedFields = Object.entries(processedData).reduce((changes, [key, value]) => {
         if (value !== movie[key as keyof Movie]) {
           (changes as any)[key] = value;
         }
         return changes;
       }, {} as Partial<Movie>);
+      delete modifiedFields.meta_ids;
       onSave({ ...modifiedFields, id: movie.id });
     }
   };
@@ -105,6 +104,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Size (GB)</span>
               <input
                 type="number"
+                step="any"
                 className={`mt-1 block w-full border ${errors.size ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
                 {...register('size', {
                   required: 'Size is required',

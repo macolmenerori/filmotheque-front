@@ -116,5 +116,40 @@ export const handlers = [
         }
       })
     );
+  }),
+  // Mock the /v1/movies/movie API to create a movie
+  rest.post(`${baseURL}/v1/movies/movie`, (req, res, ctx) => {
+    const newMovie = req.body as Movie;
+    newMovie.id = String(movies.length + 1);
+
+    return res(
+      ctx.status(201),
+      ctx.json({
+        status: 'success',
+        message: 'Movie created successfully',
+        data: {
+          movie: newMovie
+        }
+      })
+    );
+  }),
+  rest.get(`${baseURL}/v1/movies/searchmovie`, (req, res, ctx) => {
+    const title = req.url.searchParams.get('title');
+    const movie = movies.find((m) => m.title.toLowerCase() === title!.toLowerCase());
+
+    if (!movie) {
+      return res(ctx.status(404), ctx.json({ message: 'Movie not found' }));
+    }
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        status: 'success',
+        message: 'Movie found successfully',
+        data: {
+          movie
+        }
+      })
+    );
   })
 ];
