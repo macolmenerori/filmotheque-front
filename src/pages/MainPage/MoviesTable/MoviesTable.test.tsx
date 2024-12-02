@@ -4,9 +4,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
 import { Movie } from '../../../common/types/Movie.types';
+import { useToast } from '../../../context/ToastContext/ToastContext';
 import mockMovies from '../../../mocks/mockMovies.json';
 
 import MoviesTable from './MoviesTable';
+
+jest.mock('../../../context/ToastContext/ToastContext');
+
+const mockUseToast = useToast as jest.Mock;
+const mockShowToast = jest.fn();
+
+beforeEach(() => {
+  mockUseToast.mockReturnValue({ showToast: mockShowToast });
+});
 
 describe('MoviesTable', () => {
   it('renders table with movies', () => {

@@ -5,10 +5,13 @@ import { api } from '../../../api';
 import BackedUpChip from '../../../common/components/Chips/BackedUpChip/BackedUpChip';
 import WatchedChip from '../../../common/components/Chips/WatchedChip/WatchedChip';
 import { Movie } from '../../../common/types/Movie.types';
+import { useToast } from '../../../context/ToastContext/ToastContext';
 
 import { MoviesTableProps } from './MoviesTable.types';
 
 const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableProps) => {
+  const { showToast } = useToast();
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
@@ -29,14 +32,13 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
       const res = await api.delete(`/v1/movies/movie?id=${selectedMovie.id}`);
 
       if (res.status === 204) {
-        // TODO: show success toast
+        showToast({ title: 'Success', message: 'The movie was deleted', type: 'success' });
         mutate();
       } else {
         throw new Error('Failed to delete movie');
       }
     } catch (e) {
-      // TODO: error toast
-      console.error('Error deleting movie:', e);
+      showToast({ title: 'Error', message: 'Failed to delete the movie', type: 'danger' });
     } finally {
       handleCloseModal();
     }
@@ -62,15 +64,18 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
       );
 
       if (res.status === 200) {
-        // TODO: show success toast
+        showToast({
+          title: 'Success',
+          message: `Movie marked as ${!movieWatched ? 'watched' : 'unwatched'}`,
+          type: 'success'
+        });
         // Refresh table
         mutate();
       } else {
         throw new Error('Failed to mark movie as watched');
       }
     } catch (e) {
-      // TODO: error toast
-      console.error('Error marking movie as watched:', e);
+      showToast({ title: 'Error', message: 'Failed to mark movie as watched', type: 'danger' });
     }
   };
 
@@ -127,7 +132,6 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableP
           >
             {`Mark as ${movie.watched ? 'unwatched' : 'watched'}`}
           </button>
-          {/* TODO: remove */}
           <button
             className="border-0 bg-transparent text-red-600 hover:text-red-900"
             onClick={() => handleOpenModal(movie)}

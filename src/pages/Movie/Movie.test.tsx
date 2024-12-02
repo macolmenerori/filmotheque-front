@@ -4,6 +4,8 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import useSWR from 'swr';
 
+import { useToast } from '../../context/ToastContext/ToastContext';
+
 import Movie from './Movie';
 
 jest.mock('swr');
@@ -24,6 +26,14 @@ jest.mock('../../context/UserContext/UserContext', () => ({
     setUser: mockSetUser
   })
 }));
+
+jest.mock('../../context/ToastContext/ToastContext');
+const mockUseToast = useToast as jest.Mock;
+const mockShowToast = jest.fn();
+
+beforeEach(() => {
+  mockUseToast.mockReturnValue({ showToast: mockShowToast });
+});
 
 describe('Movie Page', () => {
   const mockUseSWR = useSWR as jest.Mock;

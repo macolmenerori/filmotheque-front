@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { api } from '../../api';
 import Navbar from '../../common/components/Navbar/Navbar';
 import { Movie, MovieFormData, SearchMovieApiResponse } from '../../common/types/Movie.types';
+import { useToast } from '../../context/ToastContext/ToastContext';
 import { useUser } from '../../context/UserContext/UserContext';
 
 const NewMovie = () => {
@@ -31,6 +32,7 @@ const NewMovie = () => {
   });
 
   const { user } = useUser();
+  const { showToast } = useToast();
 
   const [debouncedTitle, setDebouncedTitle] = useState<string>(''); // Holds debounced value of title
   const backedUp = watch('backedUp');
@@ -97,14 +99,13 @@ const NewMovie = () => {
       });
 
       if (res.status === 201) {
-        // TODO: show success toast
+        showToast({ title: 'Success', message: 'Movie created successfully', type: 'success' });
         reset();
       } else {
         throw new Error('Failed to add movie');
       }
     } catch (e) {
-      // TODO: show fail toast
-      console.error(e);
+      showToast({ title: 'Error', message: 'Movie was not created', type: 'danger' });
     }
   };
 

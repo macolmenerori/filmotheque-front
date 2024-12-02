@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import useSWR from 'swr';
 
+import { useToast } from '../../context/ToastContext/ToastContext';
 import mockMovies from '../../mocks/mockMovies.json';
 
 import MainPage from './MainPage';
@@ -21,6 +22,15 @@ jest.mock('../../context/UserContext/UserContext', () => ({
 }));
 
 jest.mock('swr');
+
+jest.mock('../../context/ToastContext/ToastContext');
+
+const mockUseToast = useToast as jest.Mock;
+const mockShowToast = jest.fn();
+
+beforeEach(() => {
+  mockUseToast.mockReturnValue({ showToast: mockShowToast });
+});
 
 describe('MainPage', () => {
   beforeEach(() => {

@@ -9,11 +9,13 @@ import WatchedChip from '../../common/components/Chips/WatchedChip/WatchedChip';
 import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 import Navbar from '../../common/components/Navbar/Navbar';
 import { FullMovieApiResponse, Movie } from '../../common/types/Movie.types';
+import { useToast } from '../../context/ToastContext/ToastContext';
 
 import EditMovieModal from './EditMovieModal/EditMovieModal';
 
 const Movie = () => {
   const params = useParams();
+  const { showToast } = useToast();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -37,7 +39,7 @@ const Movie = () => {
       });
 
       if (res.status === 200) {
-        // TODO: show success toast
+        showToast({ title: 'Success', message: 'Movie updated successfully', type: 'success' });
         // Close the modal after saving
         closeModal();
         // Refresh table
@@ -46,7 +48,7 @@ const Movie = () => {
         throw new Error('Failed to save movie');
       }
     } catch (e) {
-      // TODO: show fail toast
+      showToast({ title: 'Error', message: 'Error updating the movie', type: 'danger' });
       console.error(e);
     }
   };
