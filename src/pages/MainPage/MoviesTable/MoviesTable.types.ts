@@ -5,4 +5,5 @@ export type MoviesTableProps = {
   onSort: (column: 'title' | 'year' | 'length') => void;
   sortBy: string | null;
   sortOrder: 'asc' | 'desc' | null;
+  mutate: () => void;
 };

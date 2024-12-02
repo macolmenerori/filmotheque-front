@@ -1,17 +1,43 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { api } from '../../../api';
 import BackedUpChip from '../../../common/components/Chips/BackedUpChip/BackedUpChip';
 import WatchedChip from '../../../common/components/Chips/WatchedChip/WatchedChip';
 
 import { MoviesTableProps } from './MoviesTable.types';
 
-const MoviesTable = ({ movies, onSort, sortBy, sortOrder }: MoviesTableProps) => {
+const MoviesTable = ({ movies, onSort, sortBy, sortOrder, mutate }: MoviesTableProps) => {
   const getSortIcon = (column: string) => {
     if (sortBy === column) {
       return sortOrder === 'asc' ? '↑' : '↓';
     }
     return '';
+  };
+
+  const handleMarkAsWatched = async (movieId: string, movieWatched: boolean) => {
+    try {
+      const res = await api.patch(
+        '/v1/movies/movie',
+        { watched: !movieWatched, id: movieId },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (res.status === 200) {
+        // TODO: show success toast
+        // Refresh table
+        mutate();
+      } else {
+        throw new Error('Failed to mark movie as watched');
+      }
+    } catch (e) {
+      // TODO: error toast
+      console.error('Error marking movie as watched:', e);
+    }
   };
 
   const movieRows = movies.map((movie) => (
@@ -60,10 +86,18 @@ const MoviesTable = ({ movies, onSort, sortBy, sortOrder }: MoviesTableProps) =>
       </td>
 
       <td className="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap border-b border-gray-200">
-        {/* TODO: remove */}
-        <a href="google.com" className="text-red-600 hover:text-red-900">
-          Remove
-        </a>
+        <div className="flex flex-col gap-2">
+          <button
+            className={`border-0 bg-transparent ${movie.watched ? 'text-amber-400 hover:text-amber-900' : 'text-green-600 hover:text-green-900'}`}
+            onClick={() => handleMarkAsWatched(movie.id, movie.watched)}
+          >
+            {`Mark as ${movie.watched ? 'unwatched' : 'watched'}`}
+          </button>
+          {/* TODO: remove */}
+          <button className="border-0 bg-transparent text-red-600 hover:text-red-900">
+            Remove
+          </button>
+        </div>
       </td>
     </tr>
   ));
