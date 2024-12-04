@@ -6,7 +6,7 @@ A personal movie collection database, to keep track of the movies we own.
 
 - [opensesame project](https://github.com/macolmenerori/opensesame) set up and running (for authentication)
 - [filmotheque-back](https://github.com/macolmenerori/filmotheque-back) set up and running
-- [Node JS](https://nodejs.org/en) `>=20`
+- [Node JS](https://nodejs.org/en) `>=22.11.0`
 - [yarn](https://yarnpkg.com/getting-started/install) `>=1.22`
 
 ## How to set up and run (Docker)
