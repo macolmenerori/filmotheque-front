@@ -8,7 +8,7 @@
     "url": "https://github.com/macolmenerori/filmotheque-front"
   },
   "engines": {
-    "node": ">=20.0.0 <21.0.0"
+    "node": ">=22.11.0"
   },
   "scripts": {
     "start": "webpack serve --port 3000",
