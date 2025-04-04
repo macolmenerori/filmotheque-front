@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { authApi } from '../../../api';
 import { useUser } from '../../../context/UserContext/UserContext';

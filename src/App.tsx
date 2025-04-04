@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router';
 
 import { ToastProvider } from './context/ToastContext/ToastContext';
 import { UserProvider } from './context/UserContext/UserContext';

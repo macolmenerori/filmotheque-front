@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { PlusIcon } from '@heroicons/react/20/solid';
 import useSWR from 'swr';

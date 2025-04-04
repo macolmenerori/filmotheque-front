@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router';
 
 import { authApi } from '../../api';
 import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
