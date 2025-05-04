@@ -42,8 +42,24 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await authApi.post('/v1/users/login', { email, password });
+
       if (response.status === 200) {
+        // Explicitly check for token in response
+        if (response.data?.data?.token) {
+          const token = response.data.data.token;
+          localStorage.setItem('authToken', token);
+        } else {
+          // Check headers (case insensitive)
+          const authHeader = response.headers.authorization || response.headers.Authorization;
+          if (authHeader) {
+            const token = typeof authHeader === 'string' ? authHeader.replace('Bearer ', '') : '';
+            localStorage.setItem('authToken', token);
+          }
+        }
+
+        // Save user to context
         setUser(response.data.data.user);
+
         navigate('/mainpage'); // Redirect to the main page after login
       }
     } catch (err) {
