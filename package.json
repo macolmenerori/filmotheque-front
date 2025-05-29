@@ -22,7 +22,7 @@
     "gitleaks": "sh scripts/gitleaks"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
+    "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "axios": "^1.8.4",
     "dotenv": "^16.5.0",
