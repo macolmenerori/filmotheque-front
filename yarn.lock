@@ -4143,10 +4143,10 @@ eslint-plugin-simple-import-sort@^12.1.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-12.1.1.tgz#e64bfdaf91c5b98a298619aa634a9f7aa43b709e"
   integrity sha512-6nuzu4xwQtE3332Uz0to+TxDQYRLTKRESSc2hefVT48Zc8JthmN23Gx9lnYhu0FtkRSL1oxny3kJ2aveVhmOVA==
 
-eslint-plugin-testing-library@^7.5.2:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-7.5.2.tgz#6e7a86f4c24e64efb7e9f60b511508ce42fa404e"
-  integrity sha512-8WJOBsV+RZRNJE1dbtJie5oPpU2c6SvUUQ8/tyDQwXUPW1UCpVvlef3lvoPVQfOlGfO/6r2yOuCXFxii0zrpqQ==
+eslint-plugin-testing-library@^7.5.3:
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-7.5.3.tgz#d9d19acfccc1f5bae2ede05d1356587e68a3438a"
+  integrity sha512-sZk5hIrx0p1ehvdS2qHefKwXHiEysiQN+FMGCzES6xRNUgwI3q4KdWMeAwpPDP9u0RDkNzJpebRUnNch1sJh+A==
   dependencies:
     "@typescript-eslint/scope-manager" "^8.15.0"
     "@typescript-eslint/utils" "^8.15.0"
