@@ -21,7 +21,7 @@ const Navbar = () => {
       </div>
       <button
         onClick={handleLogout}
-        className="border-2 border-red-600 bg-transparent text-red-600 py-1 px-3 rounded"
+        className="border-2 border-red-600 bg-transparent text-red-600 py-1 px-3 rounded-sm"
       >
         Logout
       </button>

@@ -126,7 +126,7 @@ const NewMovie = () => {
                 type="text"
                 id="title"
                 {...register('title', { required: 'Title is required' })}
-                className={`w-full border px-3 py-2 rounded ${errors.title ? 'border-red-500' : 'border-gray-300'}`}
+                className={`w-full border px-3 py-2 rounded-sm ${errors.title ? 'border-red-500' : 'border-gray-300'}`}
               />
               {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
             </div>
@@ -141,7 +141,7 @@ const NewMovie = () => {
                 type="text"
                 id="poster_url"
                 {...register('poster_url')}
-                className={`w-full border px-3 py-2 rounded ${errors.poster_url ? 'border-red-500' : 'border-gray-300'}`}
+                className={`w-full border px-3 py-2 rounded-sm ${errors.poster_url ? 'border-red-500' : 'border-gray-300'}`}
               />
               {errors.poster_url && (
                 <p className="text-red-500 text-sm">{errors.poster_url.message}</p>
@@ -169,7 +169,7 @@ const NewMovie = () => {
                       message: 'Enter a valid year (current year or earlier)'
                     }
                   })}
-                  className={`w-full border px-3 py-2 rounded ${errors.year ? 'border-red-500' : 'border-gray-300'}`}
+                  className={`w-full border px-3 py-2 rounded-sm ${errors.year ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.year && <p className="text-red-500 text-sm">{errors.year.message}</p>}
               </div>
@@ -190,7 +190,7 @@ const NewMovie = () => {
                       message: 'Enter a valid length (0 or more)'
                     }
                   })}
-                  className={`w-full border px-3 py-2 rounded ${errors.length ? 'border-red-500' : 'border-gray-300'}`}
+                  className={`w-full border px-3 py-2 rounded-sm ${errors.length ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.length && <p className="text-red-500 text-sm">{errors.length.message}</p>}
               </div>
@@ -206,7 +206,7 @@ const NewMovie = () => {
                   type="text"
                   id="id"
                   {...register('id')}
-                  className={`w-full border px-3 py-2 rounded ${errors.id ? 'border-red-500' : 'border-gray-300'}`}
+                  className={`w-full border px-3 py-2 rounded-sm ${errors.id ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.id && <p className="text-red-500 text-sm">{errors.id.message}</p>}
               </div>
@@ -251,7 +251,7 @@ const NewMovie = () => {
                       type="date"
                       id="backupDate"
                       {...register('backupDate')}
-                      className={`w-full border px-3 py-2 rounded ${errors.backupDate ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full border px-3 py-2 rounded-sm ${errors.backupDate ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {errors.backupDate && (
                       <p className="text-red-500 text-sm">{errors.backupDate.message}</p>
@@ -268,7 +268,7 @@ const NewMovie = () => {
                       id="size"
                       step="any"
                       {...register('size', { valueAsNumber: true })}
-                      className={`w-full border px-3 py-2 rounded ${errors.size ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full border px-3 py-2 rounded-sm ${errors.size ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {errors.size && <p className="text-red-500 text-sm">{errors.size.message}</p>}
                   </div>
@@ -283,7 +283,7 @@ const NewMovie = () => {
                     type="text"
                     id="media"
                     {...register('media', { required: backedUp ? 'Media is required' : false })}
-                    className={`w-full border px-3 py-2 rounded ${errors.media ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`w-full border px-3 py-2 rounded-sm ${errors.media ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {errors.media && <p className="text-red-500 text-sm">{errors.media.message}</p>}
                 </div>
@@ -293,7 +293,7 @@ const NewMovie = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="bg-blue-500 text-white mt-4 px-4 py-2 rounded hover:bg-blue-600"
+              className="bg-blue-500 text-white mt-4 px-4 py-2 rounded-sm hover:bg-blue-600"
             >
               Submit
             </button>

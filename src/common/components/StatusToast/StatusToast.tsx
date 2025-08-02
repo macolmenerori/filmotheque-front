@@ -26,7 +26,7 @@ const StatusToast = ({ title, message, type, onClose }: StatusToastProps) => {
           <h5 className="font-bold text-lg">{title}</h5>
           <button
             type="button"
-            className="text-white hover:text-gray-200 focus:outline-none"
+            className="text-white hover:text-gray-200 focus:outline-hidden"
             aria-label="Close"
             onClick={onClose}
           >

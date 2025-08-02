@@ -83,7 +83,7 @@ const Movie = () => {
                         {data.data.movie.title}
                       </h1>
                       <button
-                        className="px-3 py-1.5 text-sm rounded-md font-medium shadow-sm bg-purple-600 text-white"
+                        className="px-3 py-1.5 text-sm rounded-md font-medium shadow-xs bg-purple-600 text-white"
                         onClick={openModal}
                       >
                         Edit

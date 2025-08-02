@@ -45,7 +45,7 @@ const Pagination = ({
         <select
           value={perPage}
           onChange={handlePerPageChange}
-          className="rounded-md border-gray-300 text-sm shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          className="rounded-md border-gray-300 text-sm shadow-xs focus:border-indigo-500 focus:ring-3 focus:ring-indigo-200 focus:ring-indigo-200/50"
         >
           <option value={5}>5 results per page</option>
           <option value={20}>20 results per page</option>
@@ -56,7 +56,7 @@ const Pagination = ({
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
-          className={`rounded-md bg-gray-200 px-3 py-2 text-sm font-medium shadow-sm hover:bg-gray-300 focus:outline-none focus:ring focus:ring-indigo-500 ${
+          className={`rounded-md bg-gray-200 px-3 py-2 text-sm font-medium shadow-xs hover:bg-gray-300 focus:outline-hidden focus:ring-3 focus:ring-indigo-500 ${
             currentPage === 1 ? 'cursor-not-allowed opacity-50' : ''
           }`}
         >
@@ -65,7 +65,7 @@ const Pagination = ({
         <button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className={`rounded-md bg-gray-200 px-3 py-2 text-sm font-medium shadow-sm hover:bg-gray-300 focus:outline-none focus:ring focus:ring-indigo-500 ${
+          className={`rounded-md bg-gray-200 px-3 py-2 text-sm font-medium shadow-xs hover:bg-gray-300 focus:outline-hidden focus:ring-3 focus:ring-indigo-500 ${
             currentPage === totalPages ? 'cursor-not-allowed opacity-50' : ''
           }`}
         >

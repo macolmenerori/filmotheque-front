@@ -102,7 +102,7 @@ const MainPage = () => {
             <span className="sm:ml-3">
               <button
                 type="button"
-                className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 onClick={() => navigate('/newmovie')}
               >
                 <PlusIcon aria-hidden="true" className="-ml-0.5 mr-1.5 size-5" />
@@ -115,7 +115,7 @@ const MainPage = () => {
         <div className="flex space-x-4 mb-6 mt-6">
           <button
             onClick={handleFilterWatched}
-            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-sm ${
+            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-xs ${
               filterWatched !== null
                 ? 'bg-purple-600 text-white'
                 : 'bg-white text-purple-600 border border-purple-600'
@@ -130,7 +130,7 @@ const MainPage = () => {
 
           <button
             onClick={handleFilterBackedUp}
-            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-sm ${
+            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-xs ${
               filterBackedUp !== null
                 ? 'bg-purple-600 text-white'
                 : 'bg-white text-purple-600 border border-purple-600'
@@ -144,8 +144,8 @@ const MainPage = () => {
           </button>
 
           <button
-            onClick={(e) => handleSort('year')}
-            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-sm ${
+            onClick={() => handleSort('year')}
+            className={`px-3 py-1.5 text-sm rounded-md font-medium shadow-xs ${
               sortBy === 'year'
                 ? 'bg-purple-600 text-white'
                 : 'bg-white text-purple-600 border border-purple-600'

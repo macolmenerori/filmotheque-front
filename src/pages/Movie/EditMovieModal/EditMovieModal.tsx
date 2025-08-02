@@ -53,7 +53,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Title</span>
               <input
                 type="text"
-                className={`mt-1 block w-full border ${errors.title ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                className={`mt-1 block w-full border ${errors.title ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                 {...register('title', { required: 'Title is required' })}
               />
               {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
@@ -66,7 +66,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
                 data-testid="year-input"
                 className={`mt-1 block w-full border ${
                   errors.year ? 'border-red-500' : 'border-gray-300'
-                } rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                } rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                 {...register('year', {
                   required: 'Year is required',
                   valueAsNumber: true,
@@ -87,7 +87,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Length (min)</span>
               <input
                 type="number"
-                className={`mt-1 block w-full border ${errors.length ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                className={`mt-1 block w-full border ${errors.length ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                 {...register('length', {
                   required: 'Length is required',
                   valueAsNumber: true,
@@ -105,7 +105,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <input
                 type="number"
                 step="any"
-                className={`mt-1 block w-full border ${errors.size ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                className={`mt-1 block w-full border ${errors.size ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                 {...register('size', {
                   required: 'Size is required',
                   valueAsNumber: true,
@@ -122,7 +122,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Media</span>
               <input
                 type="string"
-                className={`mt-1 p-2 block w-full border ${errors.media ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                className={`mt-1 p-2 block w-full border ${errors.media ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                 {...register('media', {
                   required: 'Media is required'
                 })}
@@ -134,7 +134,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
               <span className="text-gray-700">Poster URL</span>
               <input
                 type="text"
-                className={`mt-1 block w-full border ${errors.poster_url ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                className={`mt-1 block w-full border ${errors.poster_url ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                 {...register('poster_url', {
                   required: 'Poster URL is required'
                 })}
@@ -180,7 +180,7 @@ const EditMovieModal = ({ movie, onClose, onSave }: EditMovieModalProps) => {
                 <span className="text-gray-700">Backup Date</span>
                 <input
                   type="date"
-                  className={`mt-1 block w-full border ${errors.backupDate ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:border-blue-500`}
+                  className={`mt-1 block w-full border ${errors.backupDate ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-xs focus:ring-3 focus:ring-blue-200 focus:border-blue-500`}
                   {...register('backupDate', {
                     validate: (value) => !isNaN(new Date(value).getTime()) || 'Select a valid date'
                   })}
