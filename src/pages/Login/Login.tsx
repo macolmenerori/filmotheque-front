@@ -4,9 +4,10 @@ import { Navigate, useNavigate } from 'react-router';
 import { authApi } from '../../api';
 import LoadingSpinner from '../../common/components/LoadingSpinner/LoadingSpinner';
 import { useUser } from '../../context/UserContext/UserContext';
+import { tokenStorage } from '../../utils/tokenStorage';
 
 /**
- * Login page. User can login with email and password. This sets the user in the UserContext and a JWT token on a cookie.
+ * Login page. User can login with email and password. This sets the user in the UserContext and a JWT token in localStorage.
  * Redirects to the main page after successful login, or stays on the login page if the login fails.
  * If the user is already logged in, redirects to the main page.
  *
@@ -45,15 +46,14 @@ const Login = () => {
 
       if (response.status === 200) {
         // Explicitly check for token in response
-        if (response.data?.data?.token) {
-          const token = response.data.data.token;
-          localStorage.setItem('authToken', token);
+        if (response.data?.token) {
+          tokenStorage.setToken(response.data.token);
         } else {
           // Check headers (case insensitive)
           const authHeader = response.headers.authorization || response.headers.Authorization;
           if (authHeader) {
             const token = typeof authHeader === 'string' ? authHeader.replace('Bearer ', '') : '';
-            localStorage.setItem('authToken', token);
+            tokenStorage.setToken(token);
           }
         }
 

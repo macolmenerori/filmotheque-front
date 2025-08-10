@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 
 import { authApi } from '../../../api';
 import { useUser } from '../../../context/UserContext/UserContext';
+import { tokenStorage } from '../../../utils/tokenStorage';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await authApi.delete('/v1/users/logout');
+    tokenStorage.removeToken();
     setUser(null);
     navigate('/login');
   };
