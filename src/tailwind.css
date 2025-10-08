@@ -1,3 +1,12 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+@import '@tailwindcss/forms';
+@import '@tailwindcss/typography';
+@import '@tailwindcss/aspect-ratio';
+
+@theme {
+  --font-family-sans:
+    'InterVariable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+}
