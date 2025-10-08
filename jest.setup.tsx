@@ -31,7 +31,7 @@ jest.mock('react-router', () => ({
 //   useForm: jest.fn()
 // }));
 
-global.TextEncoder = TextEncoder;
+global.TextEncoder = TextEncoder as typeof global.TextEncoder;
 
 window.IntersectionObserver = jest.fn(() => ({
   observe: jest.fn(),
