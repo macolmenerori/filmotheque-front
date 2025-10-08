@@ -20,6 +20,3 @@ yarn-error.log*
 
 # VSCode
 .vscode
-
-# AIs
-CLAUDE.md
