@@ -79,7 +79,7 @@
     "prettier": "^3.6.2",
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.1.16",
-    "ts-jest": "^29.4.5",
+    "ts-jest": "^29.4.6",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "webpack": "^5.103.0",
