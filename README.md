@@ -49,7 +49,7 @@ docker build -t filmotheque-front:latest .
 5. Run the docker image
 
 ```
-docker run --network opensesame-network --env-file .env -p 3000:3000 --name filmotheque-front fiomotheque-front
+docker run --network opensesame-network --env-file .env -p 80:80 --name filmotheque-front filmotheque-front
 ```
 
 ## How to set up and run (Native)
