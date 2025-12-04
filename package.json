@@ -10,6 +10,7 @@
   "engines": {
     "node": ">=24.0.0"
   },
+  "packageManager": "pnpm@10.24.0",
   "scripts": {
     "start": "webpack serve --port 3000",
     "build": "NODE_ENV=production webpack",
@@ -18,7 +19,7 @@
     "prettify": "prettier -w --log-level=silent src/",
     "lint": "eslint --fix .",
     "types": "tsc --noEmit",
-    "verify": "yarn lint && yarn prettify && yarn types && yarn audit --groups dependencies && yarn test && yarn build",
+    "verify": "pnpm lint && pnpm prettify && pnpm types && pnpm audit --prod && pnpm test && pnpm build",
     "gitleaks": "sh scripts/gitleaks"
   },
   "dependencies": {
@@ -39,6 +40,8 @@
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
     "@eslint/compat": "^2.0.0",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.17",
@@ -48,6 +51,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^30.0.0",
+    "@types/node": "^24.10.1",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "@typescript-eslint/eslint-plugin": "^8.48.0",

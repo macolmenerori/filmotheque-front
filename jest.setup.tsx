@@ -1,5 +1,5 @@
 import { setupServer } from 'msw/node';
-import { TextEncoder } from 'util';
+import { TextEncoder } from 'node:util';
 
 import '@testing-library/jest-dom';
 
@@ -31,7 +31,7 @@ jest.mock('react-router', () => ({
 //   useForm: jest.fn()
 // }));
 
-global.TextEncoder = TextEncoder as typeof global.TextEncoder;
+globalThis.TextEncoder = TextEncoder as typeof globalThis.TextEncoder;
 
 window.IntersectionObserver = jest.fn(() => ({
   observe: jest.fn(),
