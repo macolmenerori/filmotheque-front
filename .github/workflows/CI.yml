@@ -17,11 +17,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 'lts/Krypton'
+          node-version: "lts/Krypton"
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm i --frozen-lockfile
       - name: Verify integration
-        run: CI=false yarn verify
+        run: CI=false pnpm verify

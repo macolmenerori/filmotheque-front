@@ -6,14 +6,14 @@ A personal movie collection database, to keep track of the movies we own.
 
 - [opensesame project](https://github.com/macolmenerori/opensesame) set up and running (for authentication)
 - [filmotheque-back](https://github.com/macolmenerori/filmotheque-back) set up and running
-- [Node JS](https://nodejs.org/en) `>=24.0.0`
-- [yarn](https://yarnpkg.com/getting-started/install) `>=1.22`
+- [Node JS](https://nodejs.org/en) `>=24.0` (Krypton)
+- [pnpm](https://pnpm.io/installation)
 
 ## How to set up and run (Docker)
 
 Easiest way to set up the project to use it right away.
 
-### Requirements:
+### Requirements
 
 - [Docker](https://www.docker.com/) installed and running
 - [opensesame-back](https://github.com/macolmenerori/opensesame-back) set up and running (can be in Docker too)
@@ -56,18 +56,18 @@ docker run --network opensesame-network --env-file .env -p 3000:3000 --name film
 
 For feature-testing and development.
 
-### Requirements:
+### Requirements
 
 - Node JS
-- yarn
+- pnpm
 - opensesame-back set up and running
 - filmotheque-back set up and running
 
 ### Steps
 
 1. Edit the file `.example.env` with all the parameters, then rename it to `.env`
-2. Install packages `yarn install`
-3. Run the dev environment `yarn start`
+2. Install packages `pnpm install`
+3. Run the dev environment `pnpm start`
 
 ## Configuration
 

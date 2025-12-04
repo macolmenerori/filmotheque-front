@@ -9,14 +9,14 @@
 - **Linting**: ESLint + Prettier
 
 ## Commands
-- `yarn build` - Production build with webpack
-- `yarn start` - Webpack dev server on port 3000
-- `yarn test` - Run all tests
-- `yarn test path/to/Component.test.tsx` - Run single test file
-- `yarn lint` - ESLint with auto-fix
-- `yarn prettify` - Format with Prettier
-- `yarn types` - TypeScript type checking
-- `yarn verify` - Run all checks and tests
+- `pnpm build` - Production build with webpack
+- `pnpm start` - Webpack dev server on port 3000
+- `pnpm test` - Run all tests
+- `pnpm test path/to/Component.test.tsx` - Run single test file
+- `pnpm lint` - ESLint with auto-fix
+- `pnpm prettify` - Format with Prettier
+- `pnpm types` - TypeScript type checking
+- `pnpm verify` - Run all checks and tests
 
 ## Project Structure
 - `/src/pages/` - Page components (MainPage, Movie, NewMovie, Login)
