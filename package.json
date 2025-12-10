@@ -1,6 +1,6 @@
 {
   "name": "filmotheque-front",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "author": "macolmenerori",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
     "start": "webpack serve --port 3000",
     "build": "NODE_ENV=production webpack",
@@ -27,9 +27,9 @@
     "@heroicons/react": "^2.2.0",
     "axios": "^1.13.2",
     "dotenv": "^17.2.3",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-hook-form": "^7.67.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-hook-form": "^7.68.0",
     "react-router": "^7.10.1",
     "swr": "^2.3.7",
     "tw-elements": "^2.0.0"
