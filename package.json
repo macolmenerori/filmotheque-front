@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.26.0",
   "scripts": {
     "start": "webpack serve --port 3000",
     "build": "NODE_ENV=production webpack",
