@@ -38,6 +38,7 @@ window.IntersectionObserver = jest.fn(() => ({
   unobserve: jest.fn(),
   root: null,
   rootMargin: '',
+  scrollMargin: '',
   takeRecords: jest.fn(),
   thresholds: [],
   disconnect: jest.fn()
