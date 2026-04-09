@@ -6,14 +6,15 @@
     "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "outDir": "./build/",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "ES6"
+    "target": "ES6",
+    "types": ["node", "react", "react-dom", "jest", "@testing-library/jest-dom"]
   },
   "exclude": ["node_modules"]
 }
