@@ -20,7 +20,7 @@
     "lint": "eslint --fix .",
     "types": "tsc --noEmit",
     "verify": "pnpm lint && pnpm prettify && pnpm types && pnpm audit --prod && pnpm test && pnpm build",
-    "gitleaks": "sh scripts/gitleaks"
+    "gitleaks": "sh scripts/gitleaks.sh"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.10",
