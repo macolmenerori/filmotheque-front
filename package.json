@@ -19,7 +19,7 @@
     "prettify": "prettier -w --log-level=silent src/",
     "lint": "eslint --fix .",
     "types": "tsc --noEmit",
-    "verify": "pnpm lint && pnpm prettify && pnpm types && pnpm audit --prod && pnpm test && pnpm build",
+    "verify": "pnpm audit --prod && pnpm lint && pnpm prettify && pnpm types && pnpm test && pnpm build",
     "gitleaks": "sh scripts/gitleaks.sh"
   },
   "dependencies": {
@@ -27,8 +27,8 @@
     "@heroicons/react": "^2.2.0",
     "axios": "^1.15.0",
     "dotenv": "^17.3.1",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "react-hook-form": "^7.72.1",
     "react-router": "^7.14.0",
     "swr": "^2.4.1",
@@ -89,5 +89,10 @@
     "webpack": "^5.105.4",
     "webpack-cli": "^7.0.2",
     "webpack-dev-server": "^5.2.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "follow-redirects": "1.16.0"
+    }
   }
 }
