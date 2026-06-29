@@ -23,8 +23,6 @@ module.exports = {
     '<rootDir>/public/'
   ],
   transform: {
-    // Use babel-jest to transpile tests with the next/babel preset
-    // <https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object>
     '^.+\\\\.(js|jsx|ts|tsx)$': ['ts-jest']
   },
   transformIgnorePatterns: ['/node_modules/', '^.+\\\\.module\\\\.(css|sass|scss)$'],
