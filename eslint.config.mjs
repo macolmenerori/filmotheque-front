@@ -1,9 +1,9 @@
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import eslintReact from '@eslint-react/eslint-plugin';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
@@ -26,16 +26,15 @@ export default [
     compat.extends(
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended',
-      'plugin:react/recommended',
       'plugin:jsx-a11y/strict',
       'plugin:jest-dom/recommended',
       'plugin:testing-library/react'
     )
   ),
+  eslintReact.configs['recommended-typescript'],
   {
     plugins: {
       '@typescript-eslint': fixupPluginRules(typescriptEslint),
-      react: fixupPluginRules(react),
       'react-hooks': reactHooks,
       'simple-import-sort': simpleImportSort
     },
@@ -79,7 +78,6 @@ export default [
         }
       ],
 
-      'react/prop-types': 'off',
       'valid-typeof': 'warn',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
