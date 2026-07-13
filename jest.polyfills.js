@@ -22,6 +22,14 @@ Object.defineProperties(globalThis, {
 const { Blob, File } = require('node:buffer');
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
+const { MessageChannel, MessagePort } = require('node:worker_threads');
+
+Object.defineProperties(globalThis, {
+  MessageChannel: { value: MessageChannel },
+  MessagePort: { value: MessagePort }
+});
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { fetch, Headers, FormData, Request, Response } = require('undici');
 
 Object.defineProperties(globalThis, {

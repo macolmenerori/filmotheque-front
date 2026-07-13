@@ -23,9 +23,16 @@ module.exports = {
     '<rootDir>/public/'
   ],
   transform: {
-    '^.+\\\\.(js|jsx|ts|tsx)$': ['ts-jest']
+    '^.+\\\\.(js|jsx|ts|tsx)$': ['ts-jest'],
+    '/node_modules/(react-router|cookie-es)/.+\\.(js|mjs)$': [
+      'babel-jest',
+      { configFile: require.resolve('./babel.config.react-router.js') }
+    ]
   },
-  transformIgnorePatterns: ['/node_modules/', '^.+\\\\.module\\\\.(css|sass|scss)$'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!.*(react-router|cookie-es))',
+    '^.+\\\\.module\\\\.(css|sass|scss)$'
+  ],
   testEnvironment: 'jest-environment-jsdom',
   testTimeout: 15000,
   preset: 'ts-jest',
