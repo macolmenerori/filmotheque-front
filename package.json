@@ -54,7 +54,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.61.1",
-    "@typescript-eslint/parser": "^8.61.1",
+    "@typescript-eslint/parser": "^8.64.0",
     "autoprefixer": "^10.5.2",
     "babel-jest": "^30.4.1",
     "copy-webpack-plugin": "^14.0.0",
