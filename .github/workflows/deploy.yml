@@ -1,5 +1,10 @@
 name: Deployment
 
+env:
+  NODE_ENV: ${{ vars.NODE_ENV }}
+  BASE_URL_AUTH: ${{ vars.BASE_URL_AUTH }}
+  BASE_URL_API: ${{ vars.BASE_URL_API }}
+
 on: workflow_dispatch
 
 jobs:
