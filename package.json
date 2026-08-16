@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@11.12.0",
+  "packageManager": "pnpm@11.21.0",
   "scripts": {
     "start": "webpack serve --port 3000",
     "build": "NODE_ENV=production webpack",
@@ -27,11 +27,11 @@
     "@heroicons/react": "^2.2.0",
     "axios": "^1.19.0",
     "dotenv": "^17.4.2",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-hook-form": "^7.84.0",
     "react-router": "^8.3.0",
-    "swr": "^2.5.0",
+    "swr": "^2.5.1",
     "tw-elements": "^2.0.0"
   },
   "devDependencies": {
@@ -51,8 +51,8 @@
     "@testing-library/user-event": "^14.6.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.1.2",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
     "autoprefixer": "^10.5.4",
@@ -81,7 +81,7 @@
     "prettier": "^3.9.6",
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.3.3",
-    "ts-jest": "^29.4.11",
+    "ts-jest": "^29.4.12",
     "ts-loader": "^9.6.2",
     "typescript": "^6.0.3",
     "undici": "^8.10.0",
