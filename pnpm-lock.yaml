@@ -103,8 +103,8 @@ importers:
         specifier: ^10.6.0
         version: 10.6.0(postcss@8.5.26)
       babel-jest:
-        specifier: ^30.5.1
-        version: 30.5.1(@babel/core@8.0.1)(supports-color@8.1.1)
+        specifier: ^30.5.2
+        version: 30.5.2(@babel/core@8.0.1)(supports-color@8.1.1)
       copy-webpack-plugin:
         specifier: ^14.0.0
         version: 14.0.0(webpack@5.111.1)
@@ -179,7 +179,7 @@ importers:
         version: 4.3.3
       ts-jest:
         specifier: ^29.4.12
-        version: 29.4.12(@babel/core@8.0.1)(@jest/transform@30.5.1(supports-color@8.1.1))(@jest/types@30.5.1)(babel-jest@30.5.1(@babel/core@8.0.1)(supports-color@8.1.1))(jest-util@30.5.1)(jest@30.5.1(@types/node@26.3.0)(supports-color@8.1.1))(typescript@6.0.3)
+        version: 29.4.12(@babel/core@8.0.1)(@jest/transform@30.5.2(supports-color@8.1.1))(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@8.0.1)(supports-color@8.1.1))(jest-util@30.5.1)(jest@30.5.1(@types/node@26.3.0)(supports-color@8.1.1))(typescript@6.0.3)
       ts-loader:
         specifier: ^9.6.2
         version: 9.6.2(typescript@6.0.3)(webpack@5.111.1)
@@ -1247,6 +1247,10 @@ packages:
 
   '@jest/transform@30.5.1':
     resolution: {integrity: sha512-EDnDhn0jleU9ZhpVoA4gvqw+Ev0iw/r5upNT2b79RiwiaTiYAMMhvNJP3lmocjIe5J2ZkoNr0B3K/J6O5GIm4Q==}
+    engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
+
+  '@jest/transform@30.5.2':
+    resolution: {integrity: sha512-LBGwmaE886C41jDZ65eqR1YbXM7642MK3ZhTowZd5+xDlrDLuf4ePuDdDmVSvcr8NTVJ3MqxLkMbUCzuigUaoQ==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
   '@jest/types@30.2.0':
@@ -2341,6 +2345,12 @@ packages:
 
   babel-jest@30.5.1:
     resolution: {integrity: sha512-ge1xUVZS91ml09YRMgRGgeKJ4YJpcOiuwteAxFBYLugQyp7cRw+hHej6Ho0vPjvLrjq60bb7JPHH9LAMA1/krA==}
+    engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
+    peerDependencies:
+      '@babel/core': ^7.11.0 || ^8.0.0-0
+
+  babel-jest@30.5.2:
+    resolution: {integrity: sha512-ES8WeJ2fNWPEDunyAtUfJ12nHyaWUloCHdkfK2oW5uSoQSUmjNKdWiGaXJITJwvFEWoD/evHEg/QoCXAvLaQqQ==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
     peerDependencies:
       '@babel/core': ^7.11.0 || ^8.0.0-0
@@ -6996,6 +7006,25 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@jest/transform@30.5.2(supports-color@8.1.1)':
+    dependencies:
+      '@babel/core': 7.29.7(supports-color@8.1.1)
+      '@jest/types': 30.5.1
+      '@jridgewell/trace-mapping': 0.3.31
+      babel-plugin-istanbul: 8.0.0(supports-color@8.1.1)
+      chalk: 4.1.2
+      convert-source-map: 2.0.0
+      fast-json-stable-stringify: 2.1.0
+      graceful-fs: 4.2.11
+      jest-haste-map: 30.5.1
+      jest-regex-util: 30.5.0
+      jest-util: 30.5.1
+      pirates: 4.0.7
+      slash: 3.0.0
+      write-file-atomic: 5.0.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@jest/types@30.2.0':
     dependencies:
       '@jest/pattern': 30.0.1
@@ -8206,10 +8235,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  babel-jest@30.5.1(@babel/core@8.0.1)(supports-color@8.1.1):
+  babel-jest@30.5.2(@babel/core@8.0.1)(supports-color@8.1.1):
     dependencies:
       '@babel/core': 8.0.1
-      '@jest/transform': 30.5.1(supports-color@8.1.1)
+      '@jest/transform': 30.5.2(supports-color@8.1.1)
       '@types/babel__core': 7.20.5
       babel-plugin-istanbul: 8.0.0(supports-color@8.1.1)
       babel-preset-jest: 30.5.0(@babel/core@8.0.1)
@@ -11487,7 +11516,7 @@ snapshots:
     dependencies:
       typescript: 6.0.3
 
-  ts-jest@29.4.12(@babel/core@8.0.1)(@jest/transform@30.5.1(supports-color@8.1.1))(@jest/types@30.5.1)(babel-jest@30.5.1(@babel/core@8.0.1)(supports-color@8.1.1))(jest-util@30.5.1)(jest@30.5.1(@types/node@26.3.0)(supports-color@8.1.1))(typescript@6.0.3):
+  ts-jest@29.4.12(@babel/core@8.0.1)(@jest/transform@30.5.2(supports-color@8.1.1))(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@8.0.1)(supports-color@8.1.1))(jest-util@30.5.1)(jest@30.5.1(@types/node@26.3.0)(supports-color@8.1.1))(typescript@6.0.3):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
@@ -11502,9 +11531,9 @@ snapshots:
       yargs-parser: 21.1.1
     optionalDependencies:
       '@babel/core': 8.0.1
-      '@jest/transform': 30.5.1(supports-color@8.1.1)
+      '@jest/transform': 30.5.2(supports-color@8.1.1)
       '@jest/types': 30.5.1
-      babel-jest: 30.5.1(@babel/core@8.0.1)(supports-color@8.1.1)
+      babel-jest: 30.5.2(@babel/core@8.0.1)(supports-color@8.1.1)
       jest-util: 30.5.1
 
   ts-loader@9.6.2(typescript@6.0.3)(webpack@5.111.1):
