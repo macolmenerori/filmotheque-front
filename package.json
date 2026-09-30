@@ -81,7 +81,7 @@
     "prettier": "^3.9.6",
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.3.3",
-    "ts-jest": "^29.4.12",
+    "ts-jest": "^29.4.14",
     "ts-loader": "^9.6.2",
     "typescript": "^6.0.3",
     "undici": "^8.10.2",
