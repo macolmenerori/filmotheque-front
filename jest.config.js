@@ -24,13 +24,13 @@ module.exports = {
   ],
   transform: {
     '^.+\\\\.(js|jsx|ts|tsx)$': ['ts-jest'],
-    '/node_modules/(react-router|cookie-es)/.+\\.(js|mjs)$': [
+    '/node_modules/(react-router|cookie-es|@remix-run/route-pattern)/.+\\.(js|mjs)$': [
       'babel-jest',
       { configFile: require.resolve('./babel.config.react-router.js') }
     ]
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!.*(react-router|cookie-es))',
+    '/node_modules/(?!.*(react-router|cookie-es|@remix-run/route-pattern))',
     '^.+\\\\.module\\\\.(css|sass|scss)$'
   ],
   testEnvironment: 'jest-environment-jsdom',
