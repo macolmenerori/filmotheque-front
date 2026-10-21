@@ -2,3 +2,6 @@ allowBuilds:
   '@parcel/watcher': false
   msw: true
   unrs-resolver: true
+
+overrides:
+  'follow-redirects': '1.16.1'
