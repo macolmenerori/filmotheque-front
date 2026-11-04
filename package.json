@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=24.0.0"
   },
-  "packageManager": "pnpm@12.14.0",
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
     "start": "webpack serve --port 3000",
     "build": "NODE_ENV=production webpack",
@@ -25,7 +25,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
-    "axios": "^1.20.0",
+    "axios": "^1.21.0",
     "dotenv": "^18.0.9",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
@@ -69,7 +69,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-simple-import-sort": "^14.0.0",
     "eslint-plugin-testing-library": "^7.16.2",
-    "globals": "^17.13.0",
+    "globals": "^17.14.0",
     "html-webpack-plugin": "^5.6.8",
     "husky": "^9.1.7",
     "jest": "^30.5.2",
